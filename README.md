@@ -1,5 +1,7 @@
 # emscriptem-lambda
 
+https://5fmdwn6crdimchpxeywfphd75y0jrdcg.lambda-url.us-east-1.on.aws/
+
 ## Local GitHub Actions testing
 - install [act](https://github.com/nektos/act)
 ```sh
