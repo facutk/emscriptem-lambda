@@ -1,0 +1,42 @@
+name: deploy to lambda
+on: [push]
+jobs:
+
+  deploy_lambda:
+    env:
+      FUNCTION_NAME: emscripten-lambda
+
+    name: deploy lambda function
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout source code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      ## skipping this step, because the lambda no dependecies
+      ## can also be skipped if the lambda has a layer
+      # - name: Install dependencies
+      #   run: npm ci
+
+      - name: zip
+        run: |
+          ls -la
+          zip -r function.zip . -x ".git/*"
+
+      - name: default deploy
+        uses: appleboy/lambda-action@v0.1.9
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: $FUNCTION_NAME
+          zip_file: function.zip
+          memory_size: 512
+          timeout: 30
+          handler: index.handler
+          runtime: nodejs16.x
