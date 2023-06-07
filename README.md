@@ -1,6 +1,6 @@
 # emscriptem-lambda
 
-> A simple example of how to use Emscripten to compile C code to WebAssembly and run it in AWS Lambda
+> An example of how to use Emscripten to compile C code to WebAssembly and run it in AWS Lambda
 
 https://5fmdwn6crdimchpxeywfphd75y0jrdcg.lambda-url.us-east-1.on.aws/
 
