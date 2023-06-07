@@ -1,0 +1,17 @@
+{
+  "name": "emscriptem-lambda",
+  "version": "1.0.0",
+  "description": "emscriptem build and deploy to lambda",
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/facutk/emscriptem-lambda.git" 
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "sh build.sh",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
